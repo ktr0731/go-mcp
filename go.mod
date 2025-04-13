@@ -6,7 +6,7 @@ require (
 	github.com/invopop/jsonschema v0.13.0
 	github.com/xeipuuv/gojsonschema v1.2.0
 	golang.org/x/exp/jsonrpc2 v0.0.0-20250305212735-054e65f0b394
-	golang.org/x/text v0.22.0
+	golang.org/x/text v0.24.0
 	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d
 )
 
