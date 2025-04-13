@@ -1,0 +1,36 @@
+name: main
+on: [push, pull_request]
+jobs:
+  test:
+    name: Build on ${{ matrix.os }} with Go ${{ matrix.go }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-latest, ubuntu-latest]
+        go: ['1.24']
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v5
+      with:
+        go-version: ${{ matrix.go }}
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v4
+
+    - name: Download dependencies
+      run: go mod download
+
+    - name: Cache modules
+      uses: actions/cache@v4
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.OS }}-go-${{ hashFiles('**/go.sum') }}
+
+    - name: Build
+      run: go build ./...
+
+    - name: Test
+      run: go test ./...
+
+    - name: Lint
+      run: go vet ./...
