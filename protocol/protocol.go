@@ -167,17 +167,17 @@ type LoggingSetLevelRequestParams struct {
 // any server can define its own, additional capabilities.
 type ServerCapabilities struct {
 	// Prompts is present if the server offers any prompt templates.
-	Prompts *PromptCapability `json:"prompts,omitzero"`
+	Prompts *PromptCapability `json:"prompts,omitzero,omitempty"`
 	// Resources is present if the server offers any resources to read.
-	Resources *ResourceCapability `json:"resources,omitzero"`
+	Resources *ResourceCapability `json:"resources,omitzero,omitempty"`
 	// Tools is present if the server offers any tools to call.
-	Tools *ToolCapability `json:"tools,omitzero"`
+	Tools *ToolCapability `json:"tools,omitzero,omitempty"`
 	// Experimental contains non-standard capabilities that the server supports.
-	Experimental map[string]any `json:"experimental,omitzero"`
+	Experimental map[string]any `json:"experimental,omitzero,omitempty"`
 	// Logging is present if the server supports sending log messages to the client.
-	Logging *LoggingCapability `json:"logging,omitzero"`
+	Logging *LoggingCapability `json:"logging,omitzero,omitempty"`
 	// Completions is present if the server supports argument autocompletion suggestions.
-	Completions *CompletionsCapability `json:"completions,omitzero"`
+	Completions *CompletionsCapability `json:"completions,omitzero,omitempty"`
 }
 
 // InitializeResult is sent from the server after receiving an initialize request from the client.
